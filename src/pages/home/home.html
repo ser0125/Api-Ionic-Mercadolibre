@@ -5,13 +5,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <div class="App">
+        <div class="App-header">
+          <h1>Search your product</h1>
+          <input type="text" [(ngModel)]="item">
+          <button ion-button (click)="searchProduct(item); ready=true">Search</button>
+        </div>
+      </div>
+
+    <div *ngIf="ready">
+    <div class="media"  *ngFor="let item of informationItems.results; let i = index">
+    <div class="media-left media-middle">
+    <img src={{item.thumbnail}} class="media-object" />
+    </div>
+    <div class="media-body">
+    <p class="product-name">{{item.title}}</p> 
+    <p class="product-price">{{item.price}}</p> 
+    <p class="product-solds">{{item.sold_quantity}} vendidos</p>
+    </div>
+  </div>
+  </div>
 </ion-content>
